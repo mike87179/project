@@ -182,7 +182,7 @@ def process_data_out(filename, W, hour, mean, std):
 
 
     n_row = 0
-    text = open('test.csv', 'r') 
+    text = open(filename, 'r') 
     row = csv.reader(text , delimiter=",")
     for r in row:
         for i in range(11-hour,11):
@@ -248,9 +248,9 @@ hr = 9
 X_train, y_train,mean ,std = process_data_in(sys.argv[3], hr)  
 #W, train_loss, train_RMSE, valid_loss, valid_RMSE = LinReg_fit(X_train, y_train,lr=1,lamb=1,momentum=1,epoch=40000,print_every=200)
 
-#np.save('weight',W)
+#np.save(sys.argv[4],W)
 
-W = np.load('weight.npy')
+W = np.load(sys.argv[4])
 
 loss = ((X_train.dot(W) - y_train)**2).sum() 
 RMSE = cal_RMSE(X_train, W, y_train)

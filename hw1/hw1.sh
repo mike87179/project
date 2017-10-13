@@ -1,1 +1,1 @@
-python3 hw1.py $1 $2 ./train.csv
+python3 hw1.py $1 $2 ./train.csv ./weight.npy

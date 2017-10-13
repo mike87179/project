@@ -69,9 +69,11 @@ def process_data_in(filename, hour):
     #train_x = np.column_stack((pm10,pm25,o3,wind_dir,wind_speed,wd_hr,ws_hr,rf,pm10**2,pm25**2))    
     train_x = np.column_stack((pm10,pm25,o3,wind_dir,wind_speed,wd_hr,ws_hr,rf,co,pm10**3,pm25**3,pm25*o3))
     #train_x = np.column_stack((pm10,pm25,o3,wind_dir,wind_speed,wd_hr,ws_hr,rf,pm10**2,pm25**2,pm25*o3))
-    for i in range(471):
+    for i in range(140):
         train_x = np.delete(train_x,2826,0)
         train_y = np.delete(train_y,2826,0)
+
+
 
     rem = []
     for i in range(len(train_x[:,0])):
@@ -182,7 +184,7 @@ def process_data_out(filename, W, hour, mean, std):
 
 
     n_row = 0
-    text = open('test.csv', 'r') 
+    text = open(filename, 'r') 
     row = csv.reader(text , delimiter=",")
     for r in row:
         for i in range(11-hour,11):
@@ -231,7 +233,7 @@ def process_data_out(filename, W, hour, mean, std):
 
     finalString = "id,value\n"
     for i in range(240) :
-        finalString = finalString + "id_" + str(i) + "," + str(round(y_hat[i][0])) + "\n"
+        finalString = finalString + "id_" + str(i) + "," + str(y_hat[i][0]) + "\n"
     f = open(sys.argv[2], "w")
     
     f.write(finalString)
@@ -243,14 +245,14 @@ def process_data_out(filename, W, hour, mean, std):
 #--------------------main function------------------------------------------- 
 
 
-np.random.seed(0)  
+np.random.seed(1)  
 hr = 9
 X_train, y_train,mean ,std = process_data_in(sys.argv[3], hr)  
 #W, train_loss, train_RMSE, valid_loss, valid_RMSE = LinReg_fit(X_train, y_train,lr=0.1,epoch=20000,print_every=200)
 
-#np.save('weight_best',W)
+#np.save(sys.argv[4],W)
 
-W = np.load('weight_best.npy')
+W = np.load(sys.argv[4])
 
 loss = ((X_train.dot(W) - y_train)**2).sum() 
 RMSE = cal_RMSE(X_train, W, y_train)
