@@ -69,7 +69,7 @@ def process_data_in(filename, hour):
     #train_x = np.column_stack((pm10,pm25,o3,wind_dir,wind_speed,wd_hr,ws_hr,rf,pm10**2,pm25**2))    
     train_x = np.column_stack((pm10,pm25,o3,wind_dir,wind_speed,wd_hr,ws_hr,rf,co,pm10**3,pm25**3,pm25*o3))
     #train_x = np.column_stack((pm10,pm25,o3,wind_dir,wind_speed,wd_hr,ws_hr,rf,pm10**2,pm25**2,pm25*o3))
-    for i in range(140):
+    for i in range(471):
         train_x = np.delete(train_x,2826,0)
         train_y = np.delete(train_y,2826,0)
 
