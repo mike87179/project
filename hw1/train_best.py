@@ -233,7 +233,7 @@ def process_data_out(filename, W, hour, mean, std):
 
     finalString = "id,value\n"
     for i in range(240) :
-        finalString = finalString + "id_" + str(i) + "," + str(y_hat[i][0]) + "\n"
+        finalString = finalString + "id_" + str(i) + "," + str(round(y_hat[i][0])) + "\n"
     f = open(sys.argv[2], "w")
     
     f.write(finalString)
