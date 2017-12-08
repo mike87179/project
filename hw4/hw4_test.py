@@ -45,7 +45,7 @@ x_train = np.array(tmp)
 
 model = load_model(sys.argv[4])
  
-pre = model.predict_classes(x_train)
+pre = model.predict_classes(x_train,batch_size=2048)
 
 index = [i for i in range(pre.shape[0])]
 
