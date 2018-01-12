@@ -34,10 +34,10 @@ def ans_out(test_data, labels, filename):
     test_data['y1'] = test_data['image1_index'].apply(lambda x:labels[x])
     test_data['y2'] = test_data['image2_index'].apply(lambda x:labels[x])
     test_data['y1+y2'] = test_data['y1'] + test_data['y2']
-    test_data['ans'] = test_data['y1+y2'].apply(lambda x: 1 if x!=1 else 0)
+    test_data['Ans'] = test_data['y1+y2'].apply(lambda x: 1 if x!=1 else 0)
 
     ID = test_data['ID']
-    Ans = test_data['ans']
+    Ans = test_data['Ans']
     
     out = pd.concat((ID,Ans),axis=1)
 
