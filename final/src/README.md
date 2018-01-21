@@ -1,6 +1,6 @@
 # Machine Learning final project 使用說明
 
-+ 執行    bash    final.sh    [test.data]    [test.csv]    [prediction.csv]
++ 執行\tbash\tfinal.sh\t[test.data]\t[test.csv]\t[prediction.csv]
 
  
 
