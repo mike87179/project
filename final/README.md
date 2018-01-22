@@ -2,6 +2,8 @@
 
 + 進入 src 之後 , 再執行 bash final.sh [test.data path] [test.csv path] [prediction file path]
 
++ 例子： bash final.sh ../data/test.data ../data/test.csv ../res.csv
+
 # Requirement 
 
 + numpy (1.14.0)
